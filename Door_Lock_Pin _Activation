@@ -1,9 +1,13 @@
 Import RPi.GPIO as GPIO 
 Import time
+
 #The setmode line sets the way in which the pins are numbered, in my case the pin I chose to power the door lock device is Pin 26 for BCM numbered layout.
 #There is also the board layout which could have been used but BCM is more suitable as its diagrams show which pins are the correct devices and or ground cables.
+
 GPIO.setmode(GPIO.BCM)
+
 #GPIO setup.OUT sets up the PI to provide power to the door lock device.
+
 GPIO.setup(26,GPIO.OUT)
 try:
      while True:
@@ -12,10 +16,14 @@ try:
 	  time.sleep(10)
 	  GPIO.output(26,GPIO.LOW)
 	  Print(‘RELAY 1 OFF’)
+	  
 #This code does not loop infinitely but instead releases the door lock for 1 second and then closes it after that second is up. 
+
 	  Time.sleep(1)
 	  GPIO.cleanup()
+	  
 #This line of code cleanup makes sure no lingering variables are present such as the state of true of false which could break the code if it is ran consecutively
-#Which means if you ran the code, the PI might save a variable as one thing but it needs to reset to the base value for this code to be reusable which it needs to be
+#Which means if you ran the code, the PI might save a variable as one thing but it needs to reset to the base value for this code to be reusable which it needs to be.
+
 Finally:
       GPIO.cleanup()
