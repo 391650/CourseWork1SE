@@ -1,0 +1,15 @@
+Import RPi.GPIO as GPIO 
+Import time
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(26,GPIO.OUT)
+try:
+     while True:
+	  GPIO.output(26,GPIO.HIGH)
+	  print(‘RELAY 1 ON’)
+	  time.sleep(10)
+	  GPIO.output(26,GPIO.LOW)
+	  Print(‘RELAY 1 OFF’)
+	  Time.sleep(1)
+	  GPIO.cleanup()
+Finally:
+      GPIO.cleanup()
